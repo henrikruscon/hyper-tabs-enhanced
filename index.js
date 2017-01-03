@@ -12,12 +12,12 @@ exports.decorateConfig = (config) => {
         dark: backColor.darken(0.14).string(),
     };
 
-    const hyperTabs = Object.assign({
+    const hyperSmarterTabs = Object.assign({
         border: false,
         activityColor: config.colors.lightYellow,
         activityPulse: true,
         tabIcons: true,
-    }, config.hyperTabs);
+    }, config.hyperSmarterTabs);
 
     const borderCSS = `
         .tabs_list {
@@ -107,7 +107,7 @@ exports.decorateConfig = (config) => {
             background-color: white;
         }
         .tab_tab.tab_hasActivity .tab_process:before {
-            background-color: ${hyperTabs.activityColor};
+            background-color: ${hyperSmarterTabs.activityColor};
         }
     `
 
@@ -177,14 +177,14 @@ exports.decorateConfig = (config) => {
                 background-color: ${colors.lighter};
             }
             .tab_tab.tab_hasActivity .tab_text {
-                color: ${hyperTabs.activityColor};
+                color: ${hyperSmarterTabs.activityColor};
             }
             .tab_tab.tab_hasActivity .tab_icon:before {
                 -webkit-mask-image: url('${__dirname}/icons/close-activity.svg');
                 -webkit-mask-size: 9px;
             }
             .tab_tab.tab_hasActivity .tab_icon:before, .tab_tab.tab_hasActivity .tab_icon:hover {
-                background-color: ${hyperTabs.activityColor};
+                background-color: ${hyperSmarterTabs.activityColor};
             }
             .tab_tab.tab_hasActivity .tab_icon:hover:before {
                 background-color: ${colors.dark};
@@ -203,9 +203,9 @@ exports.decorateConfig = (config) => {
             .tab_shape {
                 display: none;
             }
-            ${hyperTabs.border ? borderCSS : ''}
-            ${hyperTabs.activityPulse ? pulseCSS : ''}
-            ${hyperTabs.tabIcons ? iconsCSS : ''}
+            ${hyperSmarterTabs.border ? borderCSS : ''}
+            ${hyperSmarterTabs.activityPulse ? pulseCSS : ''}
+            ${hyperSmarterTabs.tabIcons ? iconsCSS : ''}
         `
     });
 };

@@ -1,10 +1,10 @@
 {
-  "name": "hyper-tabs",
+  "name": "hyper-smartertabs",
   "version": "0.1.0",
-  "description": "",
+  "description": "Smarter Tabs Plugin for Hyper",
   "main": "index.js",
   "license": "MIT",
-  "repository": "henrikdahl/hyper-tabs",
+  "repository": "henrikdahl/hyper-smartertabs",
   "author": {
     "name": "Henrik Dahlheim",
     "email": "henrik.dahlheim@gmail.com"

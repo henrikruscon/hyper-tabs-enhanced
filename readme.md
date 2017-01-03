@@ -1,6 +1,6 @@
-# hyper-tabs [![npm](https://img.shields.io/npm/v/hyper-tabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs) [![npm](https://img.shields.io/npm/dt/hyper-tabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs)
+# hyper-smartertabs [![npm](https://img.shields.io/npm/v/hyper-smartertabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-smartertabs) [![npm](https://img.shields.io/npm/dt/hyper-smartertabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-smartertabs)
 
-> Tabs Plugin for [Hyper](https://hyper.is). Minimal tabs, dynamic tabs, tab icons & tab activity. Matches any theme.
+> Smarter Tabs Plugin for [Hyper](https://hyper.is). Minimal tabs, dynamic tabs, tab icons & enhanced tab activity. Matches any theme.
 
 ![](screen.png)
 
@@ -12,7 +12,7 @@ Add following to your `~/.hyper.js` config.
 ```javascript
 module.exports = {
   ...
-  plugins: ['hyper-tabs']
+  plugins: ['hyper-smartertabs']
   ...
 }
 ```
