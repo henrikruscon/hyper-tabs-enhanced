@@ -13,10 +13,10 @@ exports.decorateConfig = (config) => {
     };
 
     const hyperTabs = Object.assign({
-        border: true,
+        border: false,
         activityColor: config.colors.lightYellow,
         activityPulse: true,
-        icons: true,
+        tabIcons: true,
     }, config.hyperTabs);
 
     const borderCSS = `
@@ -205,7 +205,7 @@ exports.decorateConfig = (config) => {
             }
             ${hyperTabs.border ? borderCSS : ''}
             ${hyperTabs.activityPulse ? pulseCSS : ''}
-            ${hyperTabs.icons ? iconsCSS : ''}
+            ${hyperTabs.tabIcons ? iconsCSS : ''}
         `
     });
 };
