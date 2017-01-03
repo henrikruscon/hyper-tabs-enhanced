@@ -1,6 +1,6 @@
 # hyper-smartertabs [![npm](https://img.shields.io/npm/v/hyper-smartertabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-smartertabs) [![npm](https://img.shields.io/npm/dt/hyper-smartertabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-smartertabs)
 
-> Smarter Tabs Plugin for [Hyper](https://hyper.is). Minimal & dynamic tabs, tab icons & enhanced tab activity. Matches any theme.
+> Smarter Tabs Plugin for [Hyper](https://hyper.is). Minimal yet smarter. Matches any theme.
 
 ![](screen.png)
 
