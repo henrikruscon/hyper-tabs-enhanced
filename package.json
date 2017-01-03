@@ -1,0 +1,23 @@
+{
+  "name": "hyper-tabs",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "henrikdahl/hyper-tabs",
+  "author": {
+    "name": "Henrik Dahlheim",
+    "email": "henrik.dahlheim@gmail.com"
+  },
+  "keywords": [
+    "hyper",
+    "hyper-tabs",
+    "hyperterm",
+    "hyperterm-tabs",
+    "tabs"
+  ],
+  "dependencies": {
+    "color": "^1.0.3",
+    "fuzzaldrin": "^2.1.0"
+  }
+}
