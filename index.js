@@ -2,17 +2,21 @@ const Color = require('color');
 const { filter } = require('fuzzaldrin');
 
 // Config
-exports.decorateConfig = config => {
-    const color = Color(config.backgroundColor);
+exports.decorateConfig = (config) => {
+    const foreColor = Color('#FFF');
+    const backColor = Color(config.backgroundColor);
     const colors = {
-        light: color.lighten(0.31).string(),
-        lighter: color.lighten(0.43).string(),
-        lightest: color.desaturate(0.5).lighten(1.05).string(),
-        dark: color.darken(0.14).string(),
+        light: backColor.lighten(0.31).string(),
+        lighter: backColor.lighten(0.43).string(),
+        lightest: foreColor.fade(0.8).string(),
+        dark: backColor.darken(0.14).string(),
     };
 
     const hyperTabs = Object.assign({
         border: true,
+        activityColor: config.colors.lightYellow,
+        activityPulse: true,
+        icons: true,
     }, config.hyperTabs);
 
     const borderCSS = `
@@ -43,6 +47,9 @@ exports.decorateConfig = config => {
         .tab_tab.tab_hasActivity .tab_text {
             animation: pulse 3s ease-in-out infinite;
         }
+        .tab_tab.tab_hasActivity:hover .tab_text {
+            animation: none;
+        }
         @keyframes pulse {
             0% {
                 opacity: 1;
@@ -56,6 +63,51 @@ exports.decorateConfig = config => {
             100% {
                 opacity: 1;
             }
+        }
+    `
+    const iconsCSS = `
+        .tab_process {
+            padding: 0 6px 0 20px;
+        }
+        .tab_process:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 14px;
+            height: 100%;
+            background-color: ${colors.lightest};
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: 0 center;
+            transition: background 150ms ease;
+        }
+        .tab_process.process_shell:before {
+            left: 5px;
+            -webkit-mask-image: url('${__dirname}/icons/process-shell.svg');
+            -webkit-mask-size: 8px 14px;
+        }
+        .tab_process.process_gulp:before {
+            left: 6px;
+            -webkit-mask-image: url('${__dirname}/icons/process-gulp.svg');
+            -webkit-mask-size: 6px 14px;
+        }
+        .tab_process.process_php:before {
+            -webkit-mask-image: url('${__dirname}/icons/process-php.svg');
+            -webkit-mask-size: 14px 10px;
+        }
+        .tab_process.process_node:before {
+            -webkit-mask-image: url('${__dirname}/icons/process-node.svg');
+            -webkit-mask-size: 14px 14px;
+        }
+        .tab_process.process_vim:before {
+            left: 2px;
+            -webkit-mask-image: url('${__dirname}/icons/process-vim.svg');
+            -webkit-mask-size: 12px 11px;
+        }
+        .tabs_title .tab_process:before, .tab_tab.tab_active .tab_process:before, .tab_tab:hover .tab_process:before {
+            background-color: white;
+        }
+        .tab_tab.tab_hasActivity .tab_process:before {
+            background-color: ${hyperTabs.activityColor};
         }
     `
 
@@ -122,17 +174,17 @@ exports.decorateConfig = config => {
                 transform: scale(1);
             }
             .tab_tab.tab_active .tab_icon:hover {
-                background-color: ${colors.lightest};
+                background-color: ${colors.lighter};
             }
             .tab_tab.tab_hasActivity .tab_text {
-                color: ${config.colors.yellow};
+                color: ${hyperTabs.activityColor};
             }
             .tab_tab.tab_hasActivity .tab_icon:before {
                 -webkit-mask-image: url('${__dirname}/icons/close-activity.svg');
                 -webkit-mask-size: 9px;
             }
             .tab_tab.tab_hasActivity .tab_icon:before, .tab_tab.tab_hasActivity .tab_icon:hover {
-                background-color: ${config.colors.yellow};
+                background-color: ${hyperTabs.activityColor};
             }
             .tab_tab.tab_hasActivity .tab_icon:hover:before {
                 background-color: ${colors.dark};
@@ -145,55 +197,15 @@ exports.decorateConfig = config => {
                 position: relative;
                 display: inline-block;
                 white-space: nowrap;
-                padding: 0 6px 0 20px;
                 overflow: hidden;
                 text-overflow: ellipsis;
-            }
-            .tab_process:before {
-                content: '';
-                position: absolute;
-                left: 0;
-                width: 14px;
-                height: 100%;
-                background-color: ${colors.lightest};
-                -webkit-mask-repeat: no-repeat;
-                -webkit-mask-position: 0 center;
-                transition: background 150ms ease;
-            }
-            .tab_process.process_shell:before {
-                left: 5px;
-                -webkit-mask-image: url('${__dirname}/icons/process-shell.svg');
-                -webkit-mask-size: 8px 14px;
-            }
-            .tab_process.process_gulp:before {
-                left: 6px;
-                -webkit-mask-image: url('${__dirname}/icons/process-gulp.svg');
-                -webkit-mask-size: 6px 14px;
-            }
-            .tab_process.process_php:before {
-                -webkit-mask-image: url('${__dirname}/icons/process-php.svg');
-                -webkit-mask-size: 14px 10px;
-            }
-            .tab_process.process_node:before {
-                -webkit-mask-image: url('${__dirname}/icons/process-node.svg');
-                -webkit-mask-size: 14px 14px;
-            }
-            .tab_process.process_vim:before {
-                left: 2px;
-                -webkit-mask-image: url('${__dirname}/icons/process-vim.svg');
-                -webkit-mask-size: 12px 11px;
-            }
-            .tabs_title .tab_process:before, .tab_tab.tab_active .tab_process:before, .tab_tab:hover .tab_process:before {
-                background-color: white;
-            }
-            .tab_tab.tab_hasActivity .tab_process:before {
-                background-color: ${config.colors.yellow};
             }
             .tab_shape {
                 display: none;
             }
             ${hyperTabs.border ? borderCSS : ''}
             ${hyperTabs.activityPulse ? pulseCSS : ''}
+            ${hyperTabs.icons ? iconsCSS : ''}
         `
     });
 };
@@ -205,7 +217,7 @@ const getIcon = (title) => {
 };
 
 // Hide traffic buttons
-exports.decorateBrowserOptions = defaults => {
+exports.decorateBrowserOptions = (defaults) => {
     return Object.assign({}, defaults, {
         titleBarStyle: '',
         transparent: true,
