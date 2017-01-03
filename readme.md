@@ -1,6 +1,6 @@
-# hyper-smartertabs [![npm](https://img.shields.io/npm/v/hyper-smartertabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-smartertabs) [![npm](https://img.shields.io/npm/dt/hyper-smartertabs.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-smartertabs)
+# hyper-tabs-enhanced [![npm](https://img.shields.io/npm/v/hyper-tabs-enhanced.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs-enhanced) [![npm](https://img.shields.io/npm/dt/hyper-tabs-enhanced.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs-enhanced)
 
-> Smarter Tabs Plugin for [Hyper](https://hyper.is). Minimal, dynamic, enhanced, configurable. Matches any theme.
+> Enhanced Tabs Plugin for [Hyper](https://hyper.is). Matches any theme.
 
 ![](screen.png)
 
@@ -12,7 +12,7 @@ Add following to your `~/.hyper.js` config.
 ```javascript
 module.exports = {
   ...
-  plugins: ['hyper-smartertabs']
+  plugins: ['hyper-tabs-enhanced']
   ...
 }
 ```
@@ -29,7 +29,7 @@ Default value is `false`
 module.exports = {
   config: {
     ...
-      hyperSmarterTabs: {
+      hyperTabs: {
         border: true,
       }
     ...
@@ -44,7 +44,7 @@ Expected value is `CSS colors`
 module.exports = {
   config: {
     ...
-      hyperSmarterTabs: {
+      hyperTabs: {
         activityColor: 'salmon',
       }
     ...
@@ -59,7 +59,7 @@ Default value is `true`
 module.exports = {
   config: {
     ...
-      hyperSmarterTabs: {
+      hyperTabs: {
         tabIcons: false,
       }
     ...
@@ -74,7 +74,7 @@ Default value is `true`
 module.exports = {
   config: {
     ...
-      hyperSmarterTabs: {
+      hyperTabs: {
         activityPulse: false,
       }
     ...

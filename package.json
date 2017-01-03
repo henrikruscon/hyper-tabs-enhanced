@@ -1,10 +1,10 @@
 {
-  "name": "hyper-smartertabs",
+  "name": "hyper-tabs-enhanced",
   "version": "0.1.1",
-  "description": "Smarter Tabs Plugin for Hyper",
+  "description": "Enhaned Tabs Plugin for Hyper",
   "main": "index.js",
   "license": "MIT",
-  "repository": "henrikdahl/hyper-smartertabs",
+  "repository": "henrikdahl/hyper-tabs-enhanced",
   "author": {
     "name": "Henrik Dahlheim",
     "email": "henrik.dahlheim@gmail.com"
@@ -12,9 +12,12 @@
   "keywords": [
     "hyper",
     "hyper-tabs",
+    "hyper-tabs-enhanced",
     "hyperterm",
     "hyperterm-tabs",
-    "tabs"
+    "hyperterm-tabs-enhanced",
+    "tabs",
+    "enhanced"
   ],
   "dependencies": {
     "color": "^1.0.3",
