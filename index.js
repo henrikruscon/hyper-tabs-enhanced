@@ -9,7 +9,7 @@ exports.decorateConfig = (config) => {
         light: backColor.lighten(0.31).string(),
         lighter: backColor.lighten(0.43).string(),
         lightest: foreColor.fade(0.8).string(),
-        dark: backColor.darken(0.14).string(),
+        dark: backColor.darken(0.16).string(),
     };
 
     const hyperSmarterTabs = Object.assign({
