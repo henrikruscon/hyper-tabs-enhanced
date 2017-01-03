@@ -29,7 +29,7 @@ Default value is `false`
 module.exports = {
   config: {
     ...
-      hyperTabs: {
+      hyperSmarterTabs: {
         border: true,
       }
     ...
@@ -44,7 +44,7 @@ Expected value is `CSS colors`
 module.exports = {
   config: {
     ...
-      hyperTabs: {
+      hyperSmarterTabs: {
         activityColor: 'salmon',
       }
     ...
@@ -59,7 +59,7 @@ Default value is `true`
 module.exports = {
   config: {
     ...
-      hyperTabs: {
+      hyperSmarterTabs: {
         tabIcons: false,
       }
     ...
@@ -74,7 +74,7 @@ Default value is `true`
 module.exports = {
   config: {
     ...
-      hyperTabs: {
+      hyperSmarterTabs: {
         activityPulse: false,
       }
     ...
