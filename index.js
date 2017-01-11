@@ -30,6 +30,10 @@ exports.decorateConfig = (config) => {
         .tab_tab.tab_active {
             border-color: ${colors.light} !important;
         }
+        .tab_tab:last-of-type {
+            border-right-width: 0 !important;
+            padding-right: 1px;
+        }
         .tab_tab.tab_active::before {
             content: '';
             position: absolute;
@@ -37,10 +41,6 @@ exports.decorateConfig = (config) => {
             right: 0;
             bottom: -1px;
             border-bottom: 1px solid ${config.backgroundColor};
-        }
-        .tab_tab:last-child, .tab_tab.tab_active:last-child {
-            border-right-width: 0 !important;
-            padding-right: 1px;
         }
     `
     const pulseCSS = `
@@ -128,10 +128,6 @@ exports.decorateConfig = (config) => {
             .tabs_borderShim {
                 display: none;
             }
-            .tab_first {
-                border-left-width: 0 !important;
-                padding-left: 1px;
-            }
             .tab_tab {
                 color: ${colors.lightest};
                 border-color: transparent !important;
@@ -141,6 +137,10 @@ exports.decorateConfig = (config) => {
             .tab_tab:hover {
                 color: white;
                 background-color: ${colors.light};
+            }
+            .tab_tab:first-of-type {
+                border-left-width: 0 !important;
+                padding-left: 1px;
             }
             .tab_tab.tab_active {
                 color: white;
