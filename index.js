@@ -221,7 +221,7 @@ exports.decorateBrowserOptions = (defaults) => {
     return Object.assign({}, defaults, {
         titleBarStyle: '',
         transparent: true,
-        frame: false
+        frame: false,
     });
 };
 

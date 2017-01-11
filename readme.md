@@ -83,9 +83,10 @@ module.exports = {
 ```
 
 
-## Theme
+## Recommended Themes
 
 * [hyper-hybrid-theme](https://github.com/alexfedoseev/hyper-hybrid-theme)
+* [hyper-chesterish](https://github.com/henrikdahl/hyper-chesterish)
 
 
 ## License
