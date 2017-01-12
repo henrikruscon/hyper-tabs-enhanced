@@ -22,6 +22,7 @@ module.exports = {
 
 Add following to `~/.hyper.js`.
 
+![](screen_border.png)
 ### Enable Border
 Default value is `false`
 
@@ -36,8 +37,8 @@ module.exports = {
   }
 }
 ```
-![](screen_border.png)
 
+![](screen_icons.png)
 ### Disable Tab Icons
 Default value is `true`
 
@@ -52,8 +53,8 @@ module.exports = {
   }
 }
 ```
-![](screen_icons.png)
 
+![](screen_colored.png)
 ### Enable Colored Tab Icons
 Default value is `false`
 
@@ -68,7 +69,6 @@ module.exports = {
   }
 }
 ```
-![](screen_colored.png)
 
 ### Change Activity Color
 Expected value is `CSS colors`
