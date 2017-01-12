@@ -17,6 +17,7 @@ exports.decorateConfig = (config) => {
         activityColor: config.colors.lightYellow,
         activityPulse: true,
         tabIcons: true,
+        tabIconsColored: false,
     }, config.hyperTabs);
 
     const borderCSS = `
@@ -75,9 +76,9 @@ exports.decorateConfig = (config) => {
             left: 0;
             width: 14px;
             height: 100%;
-            background-color: ${colors.lightest};
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: 0 center;
+            background-color: ${colors.lightest};
             transition: background 150ms ease;
         }
         .tab_process.process_shell:before {
@@ -108,6 +109,20 @@ exports.decorateConfig = (config) => {
         }
         .tab_tab.tab_hasActivity .tab_process:before {
             background-color: ${hyperTabs.activityColor};
+        }
+    `
+    const iconsColoredCSS = `
+        .tab_process.process_gulp:before {
+            background-color: ${config.colors.red} !important;
+        }
+        .tab_process.process_php:before {
+            background-color: ${config.colors.blue} !important;
+        }
+        .tab_process.process_node:before {
+            background-color: ${config.colors.green} !important;
+        }
+        .tab_process.process_vim:before {
+            background-color: ${config.colors.green} !important;
         }
     `
 
@@ -206,6 +221,7 @@ exports.decorateConfig = (config) => {
             ${hyperTabs.border ? borderCSS : ''}
             ${hyperTabs.activityPulse ? pulseCSS : ''}
             ${hyperTabs.tabIcons ? iconsCSS : ''}
+            ${hyperTabs.tabIconsColored ? iconsColoredCSS : ''}
         `
     });
 };
