@@ -1,6 +1,6 @@
 {
   "name": "hyper-tabs-enhanced",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Enhaned Tabs Plugin for Hyper",
   "main": "index.js",
   "license": "MIT",
