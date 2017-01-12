@@ -37,21 +37,6 @@ module.exports = {
 }
 ```
 
-### Change Activity Color
-Expected value is `CSS colors`
-
-```javascript
-module.exports = {
-  config: {
-    ...
-      hyperTabs: {
-        activityColor: 'salmon',
-      }
-    ...
-  }
-}
-```
-
 ### Disable Tab Icons
 Default value is `true`
 
@@ -61,6 +46,36 @@ module.exports = {
     ...
       hyperTabs: {
         tabIcons: false,
+      }
+    ...
+  }
+}
+```
+
+### Enable Colored Tab Icons
+Default value is `false`
+
+```javascript
+module.exports = {
+  config: {
+    ...
+      hyperTabs: {
+        tabIconsColored: true,
+      }
+    ...
+  }
+}
+```
+
+### Change Activity Color
+Expected value is `CSS colors`
+
+```javascript
+module.exports = {
+  config: {
+    ...
+      hyperTabs: {
+        activityColor: 'salmon',
       }
     ...
   }
