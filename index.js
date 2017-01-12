@@ -112,6 +112,9 @@ exports.decorateConfig = (config) => {
         }
     `
     const iconsColoredCSS = `
+        .tab_process:not(.process_shell):before {
+            transition: none;
+        }
         .tab_process.process_gulp:before {
             background-color: ${config.colors.red} !important;
         }

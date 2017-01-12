@@ -107,6 +107,8 @@ module.exports = {
 * [hyper-chesterish](https://github.com/henrikdahl/hyper-chesterish)
 * [hyper-oceans16](https://github.com/henrikdahl/hyper-oceans16)
 * [hyper-hybrid-theme](https://github.com/alexfedoseev/hyper-hybrid-theme)
+* [hyper-loved](https://github.com/danielpintilei/hyper-loved)
+* [hyper-snazzy](https://github.com/sindresorhus/hyper-snazzy)
 
 
 ## License
