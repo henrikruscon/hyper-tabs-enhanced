@@ -23,6 +23,8 @@ module.exports = {
 Add following to `~/.hyper.js`.
 
 ### Enable Border
+![](screen_border.png)
+
 Default value is `false`
 
 ```javascript
@@ -38,6 +40,7 @@ module.exports = {
 ```
 
 ### Disable Tab Icons
+![](screen_icons.png)
 Default value is `true`
 
 ```javascript
@@ -53,6 +56,7 @@ module.exports = {
 ```
 
 ### Enable Colored Tab Icons
+![](screen_colored.png)
 Default value is `false`
 
 ```javascript
