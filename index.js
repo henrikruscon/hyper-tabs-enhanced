@@ -108,7 +108,7 @@ exports.decorateConfig = (config) => {
             background-color: white;
         }
         .tab_tab.tab_hasActivity .tab_process:before {
-            background-color: ${hyperTabs.activityColor};
+            background-color: ${hyperTabs.activityColor} !important;
         }
     `
     const iconsColoredCSS = `
