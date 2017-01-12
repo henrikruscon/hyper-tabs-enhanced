@@ -2,7 +2,7 @@
 
 > Enhanced Tabs Plugin for [Hyper](https://hyper.is). Matches any theme.
 
-![](screen.png)
+![hyper-tabs-enhanced](https://cloud.githubusercontent.com/assets/1430576/21888911/a9c16f16-d8c6-11e6-9f34-74c6a3b2dd76.png)
 
 
 ## Install
@@ -22,7 +22,7 @@ module.exports = {
 
 Add following to `~/.hyper.js`.
 
-![](screen_border.png)
+![hyper-tabs-enhanced-border](https://cloud.githubusercontent.com/assets/1430576/21888916/b002f926-d8c6-11e6-9580-7d767b243bce.png)
 ### Enable Border
 Default value is `false`
 
@@ -38,7 +38,7 @@ module.exports = {
 }
 ```
 
-![](screen_icons.png)
+![hyper-tabs-enhanced-icons](https://cloud.githubusercontent.com/assets/1430576/21888912/ac83ff48-d8c6-11e6-9968-e2b1401124ae.png)
 ### Disable Tab Icons
 Default value is `true`
 
@@ -54,7 +54,7 @@ module.exports = {
 }
 ```
 
-![](screen_colored.png)
+![hyper-tabs-enhanced-colored](https://cloud.githubusercontent.com/assets/1430576/21888915/ae0a8148-d8c6-11e6-9ab3-37c78d0ef988.png)
 ### Enable Colored Tab Icons
 Default value is `false`
 
@@ -70,7 +70,7 @@ module.exports = {
 }
 ```
 
-![](screen_activity.png)
+![hyper-tabs-enhanced-activity](https://cloud.githubusercontent.com/assets/1430576/21888917/b0de576e-d8c6-11e6-8b7a-7e0ad530eb7e.png)
 ### Change Activity Color
 Expected value is `CSS colors`
 
