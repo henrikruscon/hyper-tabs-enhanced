@@ -3,6 +3,7 @@ const { filter } = require('fuzzaldrin');
 
 // Config
 exports.decorateConfig = (config) => {
+    const dirname = process.platform === 'win32' ? __dirname.replace(/\\/gi, '/') : __dirname;
     const foreColor = Color('#FFF');
     const backColor = Color(config.backgroundColor);
     const colors = {
@@ -83,25 +84,25 @@ exports.decorateConfig = (config) => {
         }
         .tab_process.process_shell:before {
             left: 5px;
-            -webkit-mask-image: url('${__dirname}/icons/process-shell.svg');
+            -webkit-mask-image: url('${dirname}/icons/process-shell.svg');
             -webkit-mask-size: 8px 14px;
         }
         .tab_process.process_gulp:before {
             left: 6px;
-            -webkit-mask-image: url('${__dirname}/icons/process-gulp.svg');
+            -webkit-mask-image: url('${dirname}/icons/process-gulp.svg');
             -webkit-mask-size: 6px 14px;
         }
         .tab_process.process_php:before {
-            -webkit-mask-image: url('${__dirname}/icons/process-php.svg');
+            -webkit-mask-image: url('${dirname}/icons/process-php.svg');
             -webkit-mask-size: 14px 10px;
         }
         .tab_process.process_node:before {
-            -webkit-mask-image: url('${__dirname}/icons/process-node.svg');
+            -webkit-mask-image: url('${dirname}/icons/process-node.svg');
             -webkit-mask-size: 14px 14px;
         }
         .tab_process.process_vim:before {
             left: 2px;
-            -webkit-mask-image: url('${__dirname}/icons/process-vim.svg');
+            -webkit-mask-image: url('${dirname}/icons/process-vim.svg');
             -webkit-mask-size: 12px 11px;
         }
         .tabs_title .tab_process:before, .tab_tab.tab_active .tab_process:before, .tab_tab:hover .tab_process:before {
@@ -179,7 +180,7 @@ exports.decorateConfig = (config) => {
                 width: 100%;
                 height: 100%;
                 background-color: white;
-                -webkit-mask-image: url('${__dirname}/icons/close.svg');
+                -webkit-mask-image: url('${dirname}/icons/close.svg');
                 -webkit-mask-repeat: no-repeat;
                 -webkit-mask-size: 9px;
                 -webkit-mask-position: center;
@@ -198,7 +199,7 @@ exports.decorateConfig = (config) => {
                 color: ${hyperTabs.activityColor};
             }
             .tab_tab.tab_hasActivity .tab_icon:before {
-                -webkit-mask-image: url('${__dirname}/icons/close-activity.svg');
+                -webkit-mask-image: url('${dirname}/icons/close-activity.svg');
                 -webkit-mask-size: 9px;
             }
             .tab_tab.tab_hasActivity .tab_icon:before, .tab_tab.tab_hasActivity .tab_icon:hover {
