@@ -232,7 +232,7 @@ exports.decorateConfig = (config) => {
 
 // Current process icon
 const getIcon = (title) => {
-    const process = filter(['shell', 'gulp', 'php', 'node', 'vim'], title.split(' ')[1], { maxResults: 1 });
+    const process = filter(['shell', 'gulp', 'php', 'node', 'vim'], title.split(' ')[1] ? title.split(' ')[1] : title, { maxResults: 1 });
     return process.length === 0 ? 'shell' : process[0];
 };
 
