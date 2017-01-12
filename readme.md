@@ -70,6 +70,7 @@ module.exports = {
 }
 ```
 
+![](screen_activity.png)
 ### Change Activity Color
 Expected value is `CSS colors`
 
