@@ -7,7 +7,7 @@ exports.decorateConfig = (config) => {
     const colors = {
         light: backColor.lighten(0.31).string(),
         lighter: backColor.lighten(0.43).string(),
-        lightest: backColor.desaturate(0.3).lightness(35).string(),
+        lightest: backColor.desaturate(0.3).lightness(36).string(),
         dark: backColor.darken(0.18).string(),
     };
 
@@ -120,10 +120,7 @@ exports.decorateConfig = (config) => {
         .tab_process.process_php:before {
             background-color: ${config.colors.blue} !important;
         }
-        .tab_process.process_node:before {
-            background-color: ${config.colors.green} !important;
-        }
-        .tab_process.process_vim:before, .tab_process.process_nvim:before {
+        .tab_process.process_node:before, .tab_process.process_vim:before, .tab_process.process_nvim:before {
             background-color: ${config.colors.green} !important;
         }
     `
