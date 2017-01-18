@@ -7,7 +7,7 @@ exports.decorateConfig = (config) => {
     const colors = {
         light: backColor.lighten(0.31).string(),
         lighter: backColor.lighten(0.43).string(),
-        lightest: backColor.desaturate(0.4).lighten(0.8).string(),
+        lightest: backColor.desaturate(0.3).lightness(35).string(),
         dark: backColor.darken(0.18).string(),
     };
 
