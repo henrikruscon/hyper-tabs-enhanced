@@ -1,16 +1,16 @@
 // Require
 const { remote } = require('electron');
 const { filter } = require('fuzzaldrin');
-const Color = require('color');
+const color = require('color');
 
 // Config
 exports.decorateConfig = (config) => {
-    const backColor = Color(config.backgroundColor);
+    const backColor = color(config.backgroundColor);
     const colors = {
-        light: backColor.lighten(0.31).string(),
-        lighter: backColor.lighten(0.43).string(),
-        lightest: backColor.desaturate(0.3).lightness(36).string(),
-        dark: backColor.darken(0.18).string(),
+        highlight: backColor.dark() ? backColor.lighten(0.31).string() : backColor.darken(0.15).string(),
+        highlightier: backColor.dark() ? backColor.lighten(0.43).string() : backColor.darken(0.18).string(),
+        inactive: backColor.dark() ? backColor.desaturate(0.3).lightness(36).string() : backColor.desaturate(0.3).lightness(58).string(),
+        back: backColor.dark() ? backColor.darken(0.18).string() : backColor.darken(0.08).string(),
     };
 
     const hyperTabs = Object.assign({
@@ -39,7 +39,7 @@ exports.decorateConfig = (config) => {
             width: 12px;
             height: 12px;
             margin-left: 8px;
-            background-color: ${colors.lightest};
+            background-color: ${backColor.dark() ? colors.inactive : colors.highlight};
             background-repeat: no-repeat;
             border-radius: 50%;
         }
@@ -68,22 +68,35 @@ exports.decorateConfig = (config) => {
             background-color: #29D043;
         }
     `
+    const trafficButtonsBorderCSS = `
+        .tab_tab:first-of-type {
+            border-left-width: 1px !important;
+            border-bottom-width: 0 !important;
+            border-left-color: ${colors.highlight} !important;
+        }
+        .tab_tab.tab_active:first-of-type {
+            border-left-color: transparent !important;
+        }
+        .tab_tab.tab_active:first-of-type:before {
+            left: -1px;
+        }
+    `
     const borderCSS = `
         .tabs_list {
-            border-bottom: 1px solid ${colors.light};
+            border-bottom: 1px solid ${colors.highlight};
         }
         .tab_tab {
             border-right-width: 1px;
             border-right-style: solid;
         }
-        .tab_tab.tab_active {
-            border-color: ${colors.light} !important;
-        }
         .tab_tab:last-of-type {
             border-right-width: 0 !important;
             padding-right: 1px;
         }
-        .tab_tab.tab_active::before {
+        .tab_tab.tab_active {
+            border-color: ${colors.highlight} !important;
+        }
+        .tab_tab.tab_active:before {
             content: '';
             position: absolute;
             left: 0;
@@ -126,7 +139,7 @@ exports.decorateConfig = (config) => {
             height: 100%;
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: 0 center;
-            background-color: ${colors.lightest};
+            background-color: ${colors.inactive};
             transition: background 150ms ease;
         }
         .tab_process.process_shell:before {
@@ -153,7 +166,7 @@ exports.decorateConfig = (config) => {
             -webkit-mask-size: 12px 11px;
         }
         .tabs_title .tab_process:before, .tab_tab.tab_active .tab_process:before, .tab_tab:hover .tab_process:before {
-            background-color: white;
+            background-color: ${backColor.dark() ? 'white' : '#303030'};
         }
         .tab_tab.tab_hasActivity .tab_process:before {
             background-color: ${hyperTabs.activityColor} !important;
@@ -192,21 +205,21 @@ exports.decorateConfig = (config) => {
                 display: none;
             }
             .tab_tab {
-                color: ${colors.lightest};
+                color: ${colors.inactive};
                 border-color: transparent !important;
-                background-color: ${colors.dark};
+                background-color: ${colors.back};
                 transition: background 150ms ease;
             }
             .tab_tab:hover {
-                color: white;
-                background-color: ${colors.light};
+                color: ${backColor.dark() ? 'white' : '#303030'};
+                background-color: ${colors.highlight};
             }
             .tab_tab:first-of-type {
                 border-left-width: 0 !important;
                 padding-left: 1px;
             }
             .tab_tab.tab_active {
-                color: white;
+                color: ${backColor.dark() ? 'white' : '#303030'};
                 background-color: transparent;
             }
             .tab_icon {
@@ -223,7 +236,7 @@ exports.decorateConfig = (config) => {
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                background-color: white;
+                background-color: ${backColor.dark() ? 'white' : '#303030'};
                 -webkit-mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5IiBoZWlnaHQ9IjkiIHZpZXdCb3g9IjAgMCA5IDkiPjxwb2x5Z29uIGZpbGw9IiMwMDAwMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgcG9pbnRzPSI0Ljk1IDQuMjQzIDguNDg1IC43MDcgNy43NzggMCA0LjI0MyAzLjUzNiAuNzA3IDAgMCAuNzA3IDMuNTM2IDQuMjQzIDAgNy43NzggLjcwNyA4LjQ4NSA0LjI0MyA0Ljk1IDcuNzc4IDguNDg1IDguNDg1IDcuNzc4Ii8+PC9zdmc+');
                 -webkit-mask-repeat: no-repeat;
                 -webkit-mask-size: 9px;
@@ -231,13 +244,13 @@ exports.decorateConfig = (config) => {
                 transition: background 150ms ease;
             }
             .tab_icon:hover {
-                background-color: ${colors.dark};
+                background-color: ${colors.back};
             }
             .tab_tab:hover .tab_icon {
                 transform: scale(1);
             }
             .tab_tab.tab_active .tab_icon:hover {
-                background-color: ${colors.lighter};
+                background-color: ${colors.highlightier};
             }
             .tab_tab.tab_hasActivity .tab_text {
                 color: ${hyperTabs.activityColor};
@@ -250,7 +263,7 @@ exports.decorateConfig = (config) => {
                 background-color: ${hyperTabs.activityColor};
             }
             .tab_tab.tab_hasActivity .tab_icon:hover:before {
-                background-color: ${colors.dark};
+                background-color: ${colors.back};
             }
             .tab_textInner {
                 padding: 0 30px;
@@ -271,6 +284,7 @@ exports.decorateConfig = (config) => {
                 pointer-events: none;
             }
             ${hyperTabs.trafficButtons ? trafficButtonsCSS : ''}
+            ${hyperTabs.trafficButtons && hyperTabs.border ? trafficButtonsBorderCSS : ''}
             ${hyperTabs.border ? borderCSS : ''}
             ${hyperTabs.activityPulse ? pulseCSS : ''}
             ${hyperTabs.tabIcons ? iconsCSS : ''}
