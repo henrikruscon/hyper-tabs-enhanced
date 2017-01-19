@@ -2,7 +2,7 @@
 
 > Enhanced Tabs Plugin for [Hyper](https://hyper.is). Matches any theme.
 
-![hyper-tabs-enhanced](https://cloud.githubusercontent.com/assets/1430576/21888911/a9c16f16-d8c6-11e6-9f34-74c6a3b2dd76.png)
+![hyper-tabs-enhanced](https://cloud.githubusercontent.com/assets/1430576/22099107/46eaa79a-de2a-11e6-9cfd-4c345d1f543f.png)
 
 
 ## Install
@@ -22,7 +22,23 @@ module.exports = {
 
 Add following to `~/.hyper.js`.
 
-![hyper-tabs-enhanced-border](https://cloud.githubusercontent.com/assets/1430576/21888916/b002f926-d8c6-11e6-9580-7d767b243bce.png)
+![hyper-tabs-enhanced-traffic](https://cloud.githubusercontent.com/assets/1430576/22099108/482fa182-de2a-11e6-8a65-90ffeb3a495b.png)
+### Enable Custom Traffic Buttons
+Default value is `false`
+
+```javascript
+module.exports = {
+  config: {
+    ...
+      hyperTabs: {
+        trafficButtons: true,
+      }
+    ...
+  }
+}
+```
+
+![hyper-tabs-enhanced-border](https://cloud.githubusercontent.com/assets/1430576/22099111/4d8526c0-de2a-11e6-91a4-c1880afea8f8.png)
 ### Enable Border
 Default value is `false`
 
@@ -38,7 +54,7 @@ module.exports = {
 }
 ```
 
-![hyper-tabs-enhanced-icons](https://cloud.githubusercontent.com/assets/1430576/21888912/ac83ff48-d8c6-11e6-9968-e2b1401124ae.png)
+![hyper-tabs-enhanced-icons](https://cloud.githubusercontent.com/assets/1430576/22099115/52b28dc2-de2a-11e6-92db-7acfe0c34e8b.png)
 ### Disable Tab Icons
 Default value is `true`
 
@@ -54,7 +70,7 @@ module.exports = {
 }
 ```
 
-![hyper-tabs-enhanced-colored](https://cloud.githubusercontent.com/assets/1430576/21888915/ae0a8148-d8c6-11e6-9ab3-37c78d0ef988.png)
+![hyper-tabs-enhanced-colored](https://cloud.githubusercontent.com/assets/1430576/22099121/567c0c9e-de2a-11e6-80c6-b3f189337112.png)
 ### Enable Colored Tab Icons
 Default value is `false`
 
@@ -70,7 +86,7 @@ module.exports = {
 }
 ```
 
-![hyper-tabs-enhanced-activity](https://cloud.githubusercontent.com/assets/1430576/21888917/b0de576e-d8c6-11e6-8b7a-7e0ad530eb7e.png)
+![hyper-tabs-enhanced-activity](https://cloud.githubusercontent.com/assets/1430576/22099125/596b252a-de2a-11e6-8dff-3359eb90cb29.png)
 ### Change Activity Color
 Expected value is `CSS colors`
 
