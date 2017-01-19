@@ -1,5 +1,7 @@
-const Color = require('color');
+// Require
+const { remote } = require('electron');
 const { filter } = require('fuzzaldrin');
+const Color = require('color');
 
 // Config
 exports.decorateConfig = (config) => {
@@ -12,6 +14,7 @@ exports.decorateConfig = (config) => {
     };
 
     const hyperTabs = Object.assign({
+        trafficButtons: false,
         border: false,
         activityColor: config.colors.lightYellow,
         activityPulse: true,
@@ -19,6 +22,52 @@ exports.decorateConfig = (config) => {
         tabIconsColored: false,
     }, config.hyperTabs);
 
+    const trafficButtonsCSS = `
+        .tabs_list {
+            margin-left: 74px;
+        }
+        .actions_nav {
+            display: flex;
+            position: fixed;
+            top: 7px;
+            left: 7px;
+            z-index: 100;
+            padding: 4px;
+            pointer-events: auto;
+        }
+        .action_action {
+            width: 12px;
+            height: 12px;
+            margin-left: 8px;
+            background-color: ${colors.lightest};
+            background-repeat: no-repeat;
+            border-radius: 50%;
+        }
+        .action_action:first-of-type {
+            margin-left: 0;
+        }
+        .action_close {
+            background-position: 2px 2px;
+        }
+        .action_minimize {
+            background-position: 2px 5px;
+        }
+        .action_fullscreen {
+            background-position: 3px 3px;
+        }
+        .action_maximize {
+            background-position: 2px 2px;
+        }
+        .actions_nav:hover .action_close {
+            background-color: #FE6158;
+        }
+        .actions_nav:hover .action_minimize {
+            background-color: #FFC130;
+        }
+        .actions_nav:hover .action_maximize {
+            background-color: #29D043;
+        }
+    `
     const borderCSS = `
         .tabs_list {
             border-bottom: 1px solid ${colors.light};
@@ -217,6 +266,11 @@ exports.decorateConfig = (config) => {
             .tab_shape {
                 display: none;
             }
+            .actions_nav {
+                display: none;
+                pointer-events: none;
+            }
+            ${hyperTabs.trafficButtons ? trafficButtonsCSS : ''}
             ${hyperTabs.border ? borderCSS : ''}
             ${hyperTabs.activityPulse ? pulseCSS : ''}
             ${hyperTabs.tabIcons ? iconsCSS : ''}
@@ -231,13 +285,59 @@ const getIcon = (title) => {
     return process.length === 0 ? 'shell' : process[0];
 };
 
-// Hide traffic buttons
+// Hide default traffic buttons
 exports.decorateBrowserOptions = (defaults) => {
     return Object.assign({}, defaults, {
         titleBarStyle: '',
         transparent: true,
         frame: false,
     });
+};
+
+// Custom traffic buttons
+exports.decorateHeader = (Hyper, { React }) => {
+    return class extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                window: null,
+                maximized: false,
+            }
+            this.closeApp = this.closeApp.bind(this);
+            this.minimizeApp = this.minimizeApp.bind(this);
+            this.maximizeApp = this.maximizeApp.bind(this);
+        }
+        closeApp() {
+            this.state.window.close();
+        }
+        minimizeApp() {
+            this.state.window.minimize();
+            this.state.maximized = false;
+        }
+        maximizeApp() {
+            if (this.state.maximized == true) {
+                this.state.window.unmaximize();
+                this.state.maximized = false;
+            } else {
+                this.state.window.maximize();
+                this.state.maximized = true;
+            }
+        }
+        render() {
+            return (
+                React.createElement(Hyper, Object.assign({}, this.props, {
+                    customChildren: React.createElement('nav', { className: 'actions_nav' },
+                        React.createElement('div', { className: 'action_action action_close', onClick: this.closeApp }),
+                        React.createElement('div', { className: 'action_action action_minimize', onClick: this.minimizeApp }),
+                        React.createElement('div', { className: 'action_action action_maximize', onClick: this.maximizeApp })
+                    )
+                }))
+            )
+        }
+        componentDidMount() {
+            this.state.window = remote.getCurrentWindow();
+        }
+    }
 };
 
 // Tab process icons
@@ -247,8 +347,8 @@ exports.decorateTab = (Tab, { React }) => {
             const icon = getIcon(this.props.text);
             this.props.text = React.createElement('span', { title: this.props.text, className: `tab_process process_${icon}` }, this.props.text);
             return React.createElement(Tab, Object.assign({}, this.props, {}));
-        };
-    };
+        }
+    }
 };
 exports.decorateTabs = (Tabs, { React }) => {
     return class extends Tabs {
