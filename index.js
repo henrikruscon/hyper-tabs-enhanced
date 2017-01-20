@@ -7,10 +7,10 @@ const color = require('color');
 exports.decorateConfig = (config) => {
     const backColor = color(config.backgroundColor);
     const colors = {
-        highlight: backColor.dark() ? backColor.lighten(0.31).string() : backColor.darken(0.15).string(),
-        highlightier: backColor.dark() ? backColor.lighten(0.43).string() : backColor.darken(0.18).string(),
+        highlight: backColor.dark() ? backColor.lighten(0.31).string() : backColor.darken(0.09).string(),
+        highlightier: backColor.dark() ? backColor.lighten(0.43).string() : backColor.darken(0.09).string(),
         inactive: backColor.dark() ? backColor.desaturate(0.3).lightness(36).string() : backColor.desaturate(0.3).lightness(58).string(),
-        back: backColor.dark() ? backColor.darken(0.18).string() : backColor.darken(0.08).string(),
+        back: backColor.dark() ? backColor.darken(0.18).string() : backColor.darken(0.05).string(),
     };
 
     const hyperTabs = Object.assign({
@@ -166,7 +166,7 @@ exports.decorateConfig = (config) => {
             -webkit-mask-size: 12px 11px;
         }
         .tabs_title .tab_process:before, .tab_tab.tab_active .tab_process:before, .tab_tab:hover .tab_process:before {
-            background-color: ${backColor.dark() ? 'white' : '#303030'};
+            background-color: ${backColor.dark() ? 'white' : config.foregroundColor};
         }
         .tab_tab.tab_hasActivity .tab_process:before {
             background-color: ${hyperTabs.activityColor} !important;
@@ -198,6 +198,9 @@ exports.decorateConfig = (config) => {
                 right: 0;
                 left: 0;
             }
+            .tabs_title {
+                color: ${backColor.dark() ? 'white' : config.foregroundColor};
+            }
             .tabs_list {
                 margin-left: 0;
             }
@@ -211,7 +214,7 @@ exports.decorateConfig = (config) => {
                 transition: background 150ms ease;
             }
             .tab_tab:hover {
-                color: ${backColor.dark() ? 'white' : '#303030'};
+                color: ${backColor.dark() ? 'white' : config.foregroundColor};
                 background-color: ${colors.highlight};
             }
             .tab_tab:first-of-type {
@@ -219,7 +222,7 @@ exports.decorateConfig = (config) => {
                 padding-left: 1px;
             }
             .tab_tab.tab_active {
-                color: ${backColor.dark() ? 'white' : '#303030'};
+                color: ${backColor.dark() ? 'white' : config.foregroundColor};
                 background-color: transparent;
             }
             .tab_icon {
@@ -236,7 +239,7 @@ exports.decorateConfig = (config) => {
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                background-color: ${backColor.dark() ? 'white' : '#303030'};
+                background-color: ${backColor.dark() ? 'white' : config.foregroundColor};
                 -webkit-mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5IiBoZWlnaHQ9IjkiIHZpZXdCb3g9IjAgMCA5IDkiPjxwb2x5Z29uIGZpbGw9IiMwMDAwMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgcG9pbnRzPSI0Ljk1IDQuMjQzIDguNDg1IC43MDcgNy43NzggMCA0LjI0MyAzLjUzNiAuNzA3IDAgMCAuNzA3IDMuNTM2IDQuMjQzIDAgNy43NzggLjcwNyA4LjQ4NSA0LjI0MyA0Ljk1IDcuNzc4IDguNDg1IDguNDg1IDcuNzc4Ii8+PC9zdmc+');
                 -webkit-mask-repeat: no-repeat;
                 -webkit-mask-size: 9px;
@@ -263,7 +266,7 @@ exports.decorateConfig = (config) => {
                 background-color: ${hyperTabs.activityColor};
             }
             .tab_tab.tab_hasActivity .tab_icon:hover:before {
-                background-color: ${colors.back};
+                background-color: ${backColor.dark() ? colors.back : config.foregroundColor};
             }
             .tab_textInner {
                 padding: 0 30px;
