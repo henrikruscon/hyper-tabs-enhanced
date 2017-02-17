@@ -23,7 +23,6 @@
     "enhanced"
   ],
   "dependencies": {
-    "color": "^1.0.3",
-    "fuzzaldrin": "^2.1.0"
+    "color": "^1.0.3"
   }
 }

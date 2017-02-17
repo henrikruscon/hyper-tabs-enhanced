@@ -1,6 +1,5 @@
 // Require
 const { remote } = require('electron');
-const { filter } = require('fuzzaldrin');
 const color = require('color');
 
 // Config
@@ -320,8 +319,8 @@ exports.decorateConfig = (config) => {
 
 // Current process icon
 const getIcon = (title) => {
-    const process = filter(['shell', 'gulp', 'php', 'node', 'npm', 'yarn', 'vim', 'nvim', 'python', 'mysql'], title.split(' ')[1] ? title.split(' ')[1] : title, { maxResults: 1 });
-    return process.length === 0 ? 'shell' : process[0];
+    const process = title.match(/(?:[\s]+|^)(gulp|php|node|npm|yarn|vim|nvim|python|mysql)(?:[\s]+|$)/i);
+    return process ? process[0].trim().toLowerCase() : 'shell';
 };
 
 // Hide default traffic buttons
