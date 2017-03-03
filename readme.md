@@ -88,7 +88,7 @@ module.exports = {
 
 ![hyper-tabs-enhanced-activity](https://cloud.githubusercontent.com/assets/1430576/22143131/353d4f5a-def9-11e6-8b7b-6aa262b2c53b.png)
 ### Change Activity Color
-Expected value is `CSS colors`
+Expected value is `CSS color`
 
 ```javascript
 module.exports = {
