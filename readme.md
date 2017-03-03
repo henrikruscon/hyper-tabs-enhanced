@@ -20,7 +20,7 @@ module.exports = {
 
 ## Config
 
-Add following to `~/.hyper.js`.
+Add following to `~/.hyper.js`
 
 ![hyper-tabs-enhanced-traffic](https://cloud.githubusercontent.com/assets/1430576/22143132/3578212a-def9-11e6-9e97-6d635bb89db8.png)
 ### Enable Traffic Buttons
