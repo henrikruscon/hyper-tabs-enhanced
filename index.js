@@ -1,6 +1,10 @@
 // Require
 const { remote } = require('electron');
 const color = require('color');
+const iconAlias = {
+    vim: ['nvim'],
+    node: ['nodemon']
+};
 
 // Config
 exports.decorateConfig = (config) => {
@@ -12,7 +16,7 @@ exports.decorateConfig = (config) => {
         inactive: isDark ? backColor.desaturate(0.3).lightness(36).string() : backColor.desaturate(0.3).lightness(58).string(),
         back: isDark ? backColor.darken(0.2).string() : backColor.darken(0.05).string(),
     };
-
+    
     const hyperTabs = Object.assign({
         trafficButtons: false,
         border: false,
@@ -21,7 +25,7 @@ exports.decorateConfig = (config) => {
         tabIcons: true,
         tabIconsColored: false,
     }, config.hyperTabs);
-
+    
     const trafficButtonsCSS = `
         .tabs_list {
             margin-left: 77px;
@@ -166,6 +170,8 @@ exports.decorateConfig = (config) => {
             background-color: ${config.colors.yellow} !important;
         }
     `
+    
+    
 
     // Hide traffic buttons
     if (!hyperTabs.trafficButtons) {
@@ -179,6 +185,7 @@ exports.decorateConfig = (config) => {
     }
 
     return Object.assign({}, config, {
+        
         css: `
             ${config.css || ''}
             .hyper_main {
@@ -287,10 +294,32 @@ exports.decorateConfig = (config) => {
     });
 };
 
+const getAliases = () => {
+    const hyperTabs = window.config.getConfig().hyperTabs;
+    const aliasesConfig = (hyperTabs && hyperTabs.iconAlias) ? hyperTabs.iconAlias : {};
+    var aliasMap = {};
+    Object.keys(iconAlias).forEach(function(origin) {
+        iconAlias[origin].forEach(function(alias) {
+            aliasMap[alias] = origin;
+        });
+    });
+    Object.keys(aliasesConfig).forEach(function(origin) {
+        aliasesConfig[origin].forEach(function(alias) {
+            aliasMap[alias] = origin;
+        });
+    });
+    return aliasMap;
+};
+
 // Current process icon
 const getIcon = (title) => {
     const process = title.match(/(?:[\s]+|^)(gulp|php|node|npm|yarn|vim|nvim|python|mysql)(?:[\s]+|$)/i);
-    return process ? process[0].trim().toLowerCase() : 'shell';
+    if(process) return process[0].trim().toLowerCase();
+    
+    const aliasMap = getAliases();
+    const process_alias = title.match(new RegExp('(?:[\\s]+|^)(' + Object.keys(aliasMap).join('|') + ')(?:[\\s]+|$)', 'i'));
+    console.log(new RegExp('(?:[\s]+|^)(' + Object.keys(aliasMap).join('|') + ')(?:[\s]+|$)', 'i'));
+    return process_alias ? aliasMap[process_alias[0].trim().toLowerCase()] : 'shell';
 };
 
 // Tab process icons

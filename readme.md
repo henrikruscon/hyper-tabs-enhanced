@@ -17,6 +17,16 @@ module.exports = {
 }
 ```
 
+## Available Icons 
+* shell
+* gulp
+* php
+* node
+* npm
+* yarn
+* vim (alias: nvim)
+* python
+* mysql
 
 ## Config
 
@@ -102,15 +112,20 @@ module.exports = {
 }
 ```
 
-### Disable Activity Pulse
-Default value is `true`
+### Add additional aliases
+Default value is `{
+    vim: ['nvim']
+}`
 
 ```javascript
 module.exports = {
   config: {
     ...
-      hyperTabs: {
-        activityPulse: false,
+      iconAlias: {
+        {
+           node: ['nodemon', 'forever'],
+           python: ['python3']
+        }
       }
     ...
   }
