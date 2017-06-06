@@ -9,9 +9,9 @@ if (process.platform == 'win32') {
 }
 const iconAlias = {
     vim: ['nvim'],
-    python: ['python3', 'python'],
+    python: ['python3'],
     node: ['nodemon'],
-    compile: ['cc', 'ccache', 'clang', 'gcc', 'gmake', 'make', 'xcodebuild',],
+    compile: ['cc', 'ccache', 'clang', 'gcc', 'gmake', 'make', 'xcodebuild'],
     docker: ['docker-compose'],
     http: ['wget', 'http'],
     shell: ['bash', 'zsh']
@@ -156,7 +156,7 @@ exports.decorateConfig = (config) => {
             -webkit-mask-position: 0 center;
             background-color: ${colors.inactive};
             transition: background 150ms ease;
-        }
+        }r
         .tab_process.process_atom:before {
             -webkit-mask-image: url('${dirname}/icons/atom.svg');
             -webkit-mask-size: 100% 50%;
@@ -181,12 +181,16 @@ exports.decorateConfig = (config) => {
             -webkit-mask-image: url('${dirname}/icons/perl.svg');
             -webkit-mask-size: 100% 50%;
         }
+        .tab_process.process_node:before {
+            -webkit-mask-image: url('${dirname}/icons/node.svg');
+            -webkit-mask-size: 100% 50%;
+        }
         .tab_process.process_composer:before {
             -webkit-mask-image: url('${dirname}/icons/composer.svg');
             -webkit-mask-size: 100% 50%;
         }
-        .tab_process.process_node:before {
-            -webkit-mask-image: url('${dirname}/icons/nodejs.svg');
+        .tab_process.process_nginx:before {
+            -webkit-mask-image: url('${dirname}/icons/nginx.svg');
             -webkit-mask-size: 100% 50%;
         }
         .tab_process.process_compile:before {
@@ -248,10 +252,10 @@ exports.decorateConfig = (config) => {
         .tab_process:not(.process_shell):before {
             transition: none;
         }
-        .tab_process.process_gulp:before, .tab_process.process_npm:before {
+        .tab_process.process_gulp:before, .tab_process.process_npm:before, .tab_process.process_git:before {
             background-color: ${config.colors.red} !important;
         }
-        .tab_process.process_yarn:before, .tab_process.process_php:before, .tab_process.process_mysql:before {
+        .tab_process.process_yarn:before, .tab_process.process_php:before, .tab_process.process_mysql:before, .tab_process.process_docker:before {
             background-color: ${config.colors.blue} !important;
         }
         .tab_process.process_node:before, .tab_process.process_vim:before, .tab_process.process_nvim:before {
@@ -394,7 +398,7 @@ const getAliases = () => {
 
 // Current process icon
 const getIcon = (title) => {
-    const process = title.match(/(?:[\s]+|^)(gulp|php|node|bash|zsh|npm|composer|git|yarn|vim|cc|ccache|clang|gcc|gmake|make|docker-compose|docker|wget|http|xcodebuild|nvim|python|mysql)(?:[\s]+|$)/i);
+    const process = title.match(/(?:[\s]+|^)(atom|nano|composer|curl|perl|bower|nginx|coffee|shell|gulp|php|node|npm|git|yarn|vim|docker|http|python|mysql)(?:[\s]+|$)/i);
     if(process) return process[0].trim().toLowerCase();
     
     const aliasMap = getAliases();

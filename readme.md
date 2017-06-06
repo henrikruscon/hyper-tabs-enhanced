@@ -33,6 +33,12 @@ module.exports = {
 * curl
 * composer
 * git
+* atom
+* bower
+* coffee
+* grunt
+* nano
+* nginx
 
 
 ## Config
@@ -149,12 +155,11 @@ Default value is `{
 module.exports = {
   config: {
     ...
-      iconAlias: {
+      iconAlias:
         {
            node: ['nodemon', 'forever'],
            python: ['python3']
         }
-      }
     ...
   }
 }
