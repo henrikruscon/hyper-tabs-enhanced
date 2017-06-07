@@ -18,7 +18,7 @@ module.exports = {
 ```
 
 ## Available Icons 
-* shell
+* shell - bash - zsh
 * gulp
 * php
 * node
@@ -27,6 +27,19 @@ module.exports = {
 * vim (alias: nvim)
 * python
 * mysql
+* compile: cc, ccache, clang, gcc, gmake, make, xcodebuild
+* docker
+* wget
+* curl
+* composer
+* git
+* atom
+* bower
+* coffee
+* grunt
+* nano
+* nginx
+
 
 ## Config
 
@@ -112,21 +125,41 @@ module.exports = {
 }
 ```
 
+### Disable Activity Pulse
+Default value is `true`
+
+```javascript
+module.exports = {
+  config: {
+    ...
+      hyperTabs: {
+        activityPulse: false,
+      }
+    ...
+  }
+}
+```
+
 ### Add additional aliases
 Default value is `{
-    vim: ['nvim']
+    vim: ['nvim'],
+    python: ['python3', 'python'],
+    node: ['nodemon'],
+    compile: ['cc', 'ccache', 'clang', 'gcc', 'gmake', 'make', 'xcodebuild',],
+    docker: ['docker-compose'],
+    http: ['wget', 'http'],
+    shell: ['bash', 'zsh']
 }`
 
 ```javascript
 module.exports = {
   config: {
     ...
-      iconAlias: {
+      iconAlias:
         {
            node: ['nodemon', 'forever'],
            python: ['python3']
         }
-      }
     ...
   }
 }
