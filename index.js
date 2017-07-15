@@ -259,9 +259,6 @@ exports.decorateConfig = (config) => {
             .tab_tab.tab_hasActivity .tab_icon:hover:before {
                 background-color: ${isDark ? colors.back : config.foregroundColor};
             }
-            .tab_textInner {
-                padding: 0 30px;
-            }
             .tab_process {
                 max-width: 100%;
                 position: relative;
@@ -272,10 +269,6 @@ exports.decorateConfig = (config) => {
             }
             .tab_shape {
                 display: none;
-            }
-            .actions_nav {
-                display: none;
-                pointer-events: none;
             }
             ${hyperTabs.trafficButtons ? trafficButtonsCSS : ''}
             ${hyperTabs.trafficButtons && hyperTabs.border ? trafficButtonsBorderCSS : ''}
@@ -298,17 +291,18 @@ exports.decorateTab = (Tab, { React }) => {
     return class extends Tab {
         render() {
             const icon = getIcon(this.props.text);
-            this.props.text = React.createElement('span', { title: this.props.text, className: `tab_process process_${icon}` }, this.props.text);
+            this.props.text = React.createElement('span', { className: `tab_process process_${icon}` }, this.props.text);
             return React.createElement(Tab, Object.assign({}, this.props, {}));
         }
     }
 };
+
 exports.decorateTabs = (Tabs, { React }) => {
     return class extends Tabs {
         render() {
             if (this.props.tabs.length === 1 && typeof this.props.tabs[0].title === 'string') {
                 const icon = getIcon(this.props.tabs[0].title);
-                this.props.tabs[0].title = React.createElement('span', { title: this.props.tabs[0].title, className: `tab_process process_${icon}` }, this.props.tabs[0].title);
+                this.props.tabs[0].title = React.createElement('span', { className: `tab_process process_${icon}` }, this.props.tabs[0].title);
             }
             return React.createElement(Tabs, Object.assign({}, this.props, {}));
         }
