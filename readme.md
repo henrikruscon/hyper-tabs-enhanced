@@ -1,4 +1,4 @@
-# hyper-tabs-enhanced [![hyper](https://img.shields.io/badge/Hyper-v1.2.1-green.svg)](https://github.com/zeit/hyper/releases/tag/1.2.1) [![npm](https://img.shields.io/npm/v/hyper-tabs-enhanced.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs-enhanced) [![npm](https://img.shields.io/npm/dt/hyper-tabs-enhanced.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs-enhanced)
+# hyper-tabs-enhanced [![hyper](https://img.shields.io/badge/Hyper-v1.3.0-green.svg)](https://github.com/zeit/hyper/releases/tag/1.3.0) [![npm](https://img.shields.io/npm/v/hyper-tabs-enhanced.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs-enhanced) [![npm](https://img.shields.io/npm/dt/hyper-tabs-enhanced.svg?maxAge=86400?style=flat-square)](https://www.npmjs.com/package/hyper-tabs-enhanced)
 
 > Enhanced Tabs Plugin for [Hyper](https://hyper.is). Matches any theme.
 
@@ -96,6 +96,22 @@ module.exports = {
     ...
       hyperTabs: {
         activityColor: 'salmon',
+      }
+    ...
+  }
+}
+```
+
+![hyper-tabs-enhanced-align](https://user-images.githubusercontent.com/1430576/28241471-6679a506-6995-11e7-925d-e80c3f8178fe.png)
+### Align Close Button Right
+Default value is `'left'`
+
+```javascript
+module.exports = {
+  config: {
+    ...
+      hyperTabs: {
+        closeAlign: 'right',
       }
     ...
   }

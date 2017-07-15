@@ -20,6 +20,7 @@ exports.decorateConfig = (config) => {
         activityPulse: true,
         tabIcons: true,
         tabIconsColored: false,
+        closeAlign: 'left',
     }, config.hyperTabs);
 
     const trafficButtonsCSS = `
@@ -218,7 +219,7 @@ exports.decorateConfig = (config) => {
             }
             .tab_icon {
                 top: 9px;
-                left: 9px;
+                ${hyperTabs.closeAlign === 'right' ? 'right: 9px;' : 'left: 9px;' }
                 width: 16px;
                 height: 16px;
                 border-radius: 2px;
