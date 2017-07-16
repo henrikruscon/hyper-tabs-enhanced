@@ -303,7 +303,7 @@ exports.decorateConfig = (config) => {
 
 // Current process icon
 const getIcon = (title) => {
-    const process = title.match(/(?:[\s]+|^)(gulp|php|node|npm|yarn|vim|nvim|python|mysql)(?:[\s]+|$)/i);
+    const process = title.match(/(?:[\s]+|\s*(?:\/\w){0,}|^)(gulp|php|node|npm|yarn|vim|nvim|python|mysql)(?:[\s]+|$)/i);
     return process ? process[0].trim().toLowerCase() : 'shell';
 };
 
