@@ -13,10 +13,30 @@ exports.decorateConfig = (config) => {
         back: isDark ? backColor.darken(0.2).string() : backColor.darken(0.05).string(),
     };
 
+    // Define default colors
+    const configColors = Object.assign({
+        black: '#000000',
+        red: '#ff0000',
+        green: '#33ff00',
+        yellow: '#ffff00',
+        blue: '#0066ff',
+        magenta: '#cc00ff',
+        cyan: '#00ffff',
+        white: '#d0d0d0',
+        lightBlack: '#808080',
+        lightRed: '#ff0000',
+        lightGreen: '#33ff00',
+        lightYellow: '#ffff00',
+        lightBlue: '#0066ff',
+        lightMagenta: '#cc00ff',
+        lightCyan: '#00ffff',
+        lightWhite: '#ffffff',
+    }, config.colors);
+
     const hyperTabs = Object.assign({
         trafficButtons: false,
         border: false,
-        activityColor: config.colors.lightYellow,
+        activityColor: configColors.lightYellow,
         activityPulse: true,
         tabIcons: true,
         tabIconsColored: false,
@@ -155,16 +175,16 @@ exports.decorateConfig = (config) => {
             transition: none;
         }
         .tab_process.process_gulp:before, .tab_process.process_npm:before {
-            background-color: ${config.colors.red} !important;
+            background-color: ${configColors.red} !important;
         }
         .tab_process.process_yarn:before, .tab_process.process_php:before, .tab_process.process_mysql:before {
-            background-color: ${config.colors.blue} !important;
+            background-color: ${configColors.blue} !important;
         }
         .tab_process.process_node:before, .tab_process.process_vim:before, .tab_process.process_nvim:before {
-            background-color: ${config.colors.green} !important;
+            background-color: ${configColors.green} !important;
         }
         .tab_process.process_python:before {
-            background-color: ${config.colors.yellow} !important;
+            background-color: ${configColors.yellow} !important;
         }
     `
 
